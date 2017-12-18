@@ -1,6 +1,6 @@
 {
     "name": "not-inform-sink-email",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "not-* family info sink via email in not- environment",
     "main": "index.js",
     "scripts": {
@@ -28,8 +28,12 @@
     },
     "homepage": "https://github.com/interrupter/not-inform-sink-email#readme",
     "dependencies": {
-        "not-path": "*",
-        "not-config": "0.0.3"
+        "handlebars": "*",
+        "nodemailer": "*",
+        "nodemailer-wellknown": "*",
+        "not-config": "0.0.3",
+        "not-inform": "0.0.5",
+        "not-path": "*"
     },
     "devDependencies": {
         "chai": "*",
@@ -38,6 +42,7 @@
         "ink-docstrap": "^1.3.2",
         "istanbul": "*",
         "jsdoc": "^3.5.5",
-        "mocha": "*"
+        "mocha": "*",
+        "not-inform-rule-tag": "*"
     }
 }
