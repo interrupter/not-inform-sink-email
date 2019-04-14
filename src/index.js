@@ -13,25 +13,31 @@ class InformSinkMail extends Sink{
 		return this;
 	}
 
-	deploy(message){
-		let transporter;
-		if (this.options.service){
-			let service = wellknown(this.options.service);
+	deploy(message, rule){
+		let transporter,
+			options = {
+				account: options.account
+			};
+		if(rule && rule.getData()){
+			options = Object.assign(options, rule.getData());
+		}
+		if (options.account.service){
+			let service = wellknown(options.account.service);
 			transporter = nodemailer.createTransport(Object.assign({
-				auth: this.options.auth
+				auth: options.account.auth
 			}, service), {
 				debug: process.env.NODE_ENV === 'development'
 			});
 		}else{
-			transporter = nodemailer.createTransport(this.options.account, {
+			transporter = nodemailer.createTransport(options.account, {
 				debug: process.env.NODE_ENV === 'development'
 			});
 		}
-		let	html = hb.compile(this.options.templates.html),
-			text = hb.compile(this.options.templates.text),
-			subject = hb.compile(this.options.templates.subject),
+		let	html = hb.compile(options.templates.html),
+			text = hb.compile(options.templates.text),
+			subject = hb.compile(options.templates.subject),
 			mailOptions = {
-				from: 		this.options.from, 		// from email field
+				from: 		options.from, 		// from email field
 				to: 			message.to, 			// to email field
 				subject: 	subject(message), 		// Subject line
 				text: 		text(message), 			// Plain text body
