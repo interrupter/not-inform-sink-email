@@ -1,4 +1,5 @@
 const log = require('not-log')(module, 'notInformSinkEmail'),
+	notNode = require('not-node'),
 	validator = require('validator')
 try{
 	const Sink = require('not-inform').Sink,
