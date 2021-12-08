@@ -1,6 +1,6 @@
 const log = require('not-log')(module, 'notInformSinkEmail'),
-	notNode = require('not-node'),
-	validator = require('validator')
+	validator = require('validator');
+
 try{
 	const Sink = require('not-inform').Sink,
 		nodemailer = require('nodemailer'),
@@ -18,7 +18,7 @@ try{
 
 		getEmailTo(recipient){
 			if(
-				Object.prototype.hasOwnProperty.call(recipient, 'email') &&
+				recipient.email &&
 				validator.isEmail(recipient.email)
 			){
 				return recipient.email;
