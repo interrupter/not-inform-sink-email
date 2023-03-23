@@ -1,7 +1,7 @@
-let manifest = {
+import UIInformSinkEmailSettings from "./ui.settings.svelte";
 
-};
+const uis = { UIInformSinkEmailSettings };
 
-export {
-	manifest
-};
+let manifest = {};
+
+export { manifest, uis };
