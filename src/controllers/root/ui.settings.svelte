@@ -1,5 +1,5 @@
 <script>
-    export let value = {
+    let { value = $bindable({
         _id: Math.random().toString().slice(3, 10),
         id: "some-rule",
         type: "email",
@@ -13,9 +13,7 @@
             },
         },
         rules: {},
-    };
-    export let readonly;
-    export let disabled;
+    }), readonly, disabled } = $props();
 </script>
 
 {#if value}
